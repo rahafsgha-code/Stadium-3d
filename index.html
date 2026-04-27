@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>King Abdullah Stadium 3D</title>
+
+  <!-- مكتبة عرض 3D -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      font-family: Arial;
+    }
+
+    .info {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      display: none;
+    }
+
+    button {
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- 3D MODEL -->
+<model-viewer
+  src="045_King_Abdullah_Stadium.glb"
+  camera-controls
+  auto-rotate
+  style="width:100%; height:100vh;">
+
+  <!-- نقطة 1 -->
+  <button slot="hotspot-1"
+    data-position="0m 5m 0m"
+    onclick="showInfo('عدد المقاعد: 60,000')">
+  </button>
+
+  <!-- نقطة 2 -->
+  <button slot="hotspot-2"
+    data-position="10m 5m 0m"
+    onclick="showInfo('الإضاءة: عالية الجودة 2000 Lux')">
+  </button>
+
+</model-viewer>
+
+<!-- صندوق المعلومات -->
+<div id="infoBox" class="info"></div>
+
+<script>
+function showInfo(text){
+  const box = document.getElementById("infoBox");
+
+  if(box.style.display === "block" && box.innerHTML === text){
+    box.style.display = "none";
+  } else {
+    box.innerHTML = text;
+    box.style.display = "block";
+  }
+}
+</script>
+
+</body>
+</html>
